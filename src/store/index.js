@@ -8,22 +8,26 @@ export default new Vuex.Store({
     stocks: [
       {
         name: "SAMSUNG",
-        currentPrice: 100
+        currentPrice: 100,
+        owned: 10
       },
       {
         name: "GOOGLE",
-        currentPrice: 100
+        currentPrice: 100,
+        owned: 0
       },
       {
         name: "APPLE",
-        currentPrice: 100
+        currentPrice: 100,
+        owned: 0
       },
       {
         name: "TESLA",
-        currentPrice: 100
+        currentPrice: 100,
+        owned: 10
       }
     ],
-    ownedStocks: []
+    funds: 10000
   },
   getters: {
     stocks: state => {
@@ -34,10 +38,20 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    buyStock: (state, payload) => {
-      state.ownedStocks.push(payload);
+    buy: (state, payload) => {
+      state.stocks[payload.index].owned += payload.qty;
+    },
+    sell: (state, payload) => {
+      state.stocks[payload.index].owned -= payload.qty;
     }
   },
-  actions: {},
+  actions: {
+    buy: ({ commit }, payload) => {
+      commit("buy", payload);
+    },
+    sell: ({ commit }, payload) => {
+      commit("sell", payload);
+    }
+  },
   modules: {}
 });
