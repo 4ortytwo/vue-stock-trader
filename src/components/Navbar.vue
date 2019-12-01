@@ -18,7 +18,7 @@
     <div>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#" @click="startNewDay">End Day</a>
+          <a class="nav-link" href="#" @click.prevent="startNewDay">End Day</a>
         </li>
 
         <app-dropdown />
