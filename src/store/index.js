@@ -89,8 +89,7 @@ export default new Vuex.Store({
       console.log("previousDay: ", previousDay);
       previousDay.forEach(el => {
         el.currentPrice =
-          Math.floor(Math.random() * (el.currentPrice + 40)) +
-          (el.currentPrice - 40);
+          Math.floor(Math.random() * el.currentPrice * 1.5) + 70;
       });
       commit("startNewDay", previousDay);
     }
