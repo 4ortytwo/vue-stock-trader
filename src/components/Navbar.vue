@@ -18,7 +18,7 @@
     <div>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">End Day</a>
+          <a class="nav-link" href="#" @click="startNewDay">End Day</a>
         </li>
 
         <app-dropdown />
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import Dropdown from "./Dropdown.vue";
 export default {
   components: {
@@ -42,6 +42,9 @@ export default {
   },
   computed: {
     ...mapGetters({ funds: "funds" })
+  },
+  methods: {
+    ...mapActions({ startNewDay: "startNewDay" })
   }
 };
 </script>

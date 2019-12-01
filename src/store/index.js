@@ -55,10 +55,10 @@ export default new Vuex.Store({
     loadState: (state, payload) => {
       state.stocks = payload;
     },
-    toggleDropdown: state => (state.showDropdown = !state.showDropdown)
-    // startNewDay: state.payload => {
-
-    // }
+    toggleDropdown: state => (state.showDropdown = !state.showDropdown),
+    startNewDay: (state, payload) => {
+      state.stocks = payload;
+    }
   },
   actions: {
     buy: ({ commit }, payload) => {
@@ -83,10 +83,17 @@ export default new Vuex.Store({
         },
         err => console.warn(err)
       );
+    },
+    startNewDay: ({ commit, state }) => {
+      const previousDay = [...state.stocks];
+      console.log("previousDay: ", previousDay);
+      previousDay.forEach(el => {
+        el.currentPrice =
+          Math.floor(Math.random() * (el.currentPrice + 40)) +
+          (el.currentPrice - 40);
+      });
+      commit("startNewDay", previousDay);
     }
-    // startNewDay: ({ commit }) => {
-    //   const stocks = this.state.stocks.slice();
-    // }
   },
   modules: {}
 });
