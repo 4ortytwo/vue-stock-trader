@@ -37,8 +37,8 @@
             id="dropdown"
             aria-labelledby="navbarDropdown"
           >
-            <a class="dropdown-item" href="#">Save</a>
-            <a class="dropdown-item" href="#">Load</a>
+            <a class="dropdown-item" href="#" @click="save">Save</a>
+            <a class="dropdown-item" href="#" @click="load">Load</a>
           </div>
         </li>
 

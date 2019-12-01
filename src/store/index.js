@@ -53,6 +53,9 @@ export default new Vuex.Store({
     },
     increaseFunds: (state, payload) => {
       state.funds += payload;
+    },
+    loadState: (state, payload) => {
+      state = payload;
     }
   },
   actions: {
@@ -68,6 +71,9 @@ export default new Vuex.Store({
     increaseFunds: ({ commit }, payload) => {
       commit("increaseFunds", payload);
     }
+    // load: async ({ commit }) => {
+    //   await Vue.http.
+    // }
   },
   modules: {}
 });
