@@ -7,9 +7,16 @@
 
 <script>
 import Navbar from "@/components/Navbar";
+import { mapActions, mapGetters } from "vuex";
 export default {
   components: {
     appNavbar: Navbar
+  },
+  computed: {
+    ...mapGetters({ showDropdown: "showDropdown" })
+  },
+  methods: {
+    ...mapActions({ toggleDropdown: "toggleDropdown" })
   }
 };
 </script>

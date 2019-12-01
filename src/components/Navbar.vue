@@ -20,27 +20,8 @@
         <li class="nav-item">
           <a class="nav-link" href="#">End Day</a>
         </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            @click="showDropdown = !showDropdown"
-          >Save &amp; Load</a>
-          <div
-            v-if="showDropdown"
-            class="bg-light p-3"
-            id="dropdown"
-            aria-labelledby="navbarDropdown"
-          >
-            <a class="dropdown-item" href="#" @click="save">Save</a>
-            <a class="dropdown-item" href="#" @click="load">Load</a>
-          </div>
-        </li>
+
+        <app-dropdown :toggle="toggleDropdown" />
 
         <li class="nav-item">
           <strong>
@@ -53,25 +34,20 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
+import { mapGetters, mapActions } from "vuex";
+import Dropdown from "./Dropdown.vue";
 export default {
-  data() {
-    return {
-      showDropdown: false
-    };
+  components: {
+    appDropdown: Dropdown
   },
   computed: {
-    ...mapGetters({ funds: "funds" })
+    ...mapGetters({ funds: "funds", showDropdown: "showDropdown" })
+  },
+  methods: {
+    ...mapActions({ toggleDropdown: "toggleDropdown" })
   }
 };
 </script>
 
 <style>
-#navbarDropdown {
-  position: relative;
-}
-#dropdown {
-  position: absolute;
-}
 </style>

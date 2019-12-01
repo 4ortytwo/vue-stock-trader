@@ -31,15 +31,13 @@ export default new Vuex.Store({
         owned: 10
       }
     ],
-    funds: 10000
+    funds: 10000,
+    showDropdown: false
   },
   getters: {
-    stocks: state => {
-      return state.stocks;
-    },
-    funds: state => {
-      return state.funds.toLocaleString();
-    }
+    stocks: state => state.stocks,
+    funds: state => state.funds.toLocaleString(),
+    showDropdown: state => state.showDropdown
   },
   mutations: {
     buy: (state, payload) => {
@@ -56,7 +54,8 @@ export default new Vuex.Store({
     },
     loadState: (state, payload) => {
       state = payload;
-    }
+    },
+    toggleDropdown: state => (state.showDropdown = !state.showDropdown)
   },
   actions: {
     buy: ({ commit }, payload) => {
@@ -70,6 +69,9 @@ export default new Vuex.Store({
     },
     increaseFunds: ({ commit }, payload) => {
       commit("increaseFunds", payload);
+    },
+    toggleDropdown: ({ commit }) => {
+      commit("toggleDropdown");
     }
     // load: async ({ commit }) => {
     //   await Vue.http.
