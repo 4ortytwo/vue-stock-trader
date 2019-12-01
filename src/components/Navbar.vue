@@ -29,18 +29,22 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
+            @click="showDropdown = !showDropdown"
           >Save &amp; Load</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+          <div
+            v-if="showDropdown"
+            class="bg-light p-3"
+            id="dropdown"
+            aria-labelledby="navbarDropdown"
+          >
+            <a class="dropdown-item" href="#">Save</a>
+            <a class="dropdown-item" href="#">Load</a>
           </div>
         </li>
 
         <li class="nav-item">
           <strong>
-            <a class="nav-link" href="#">Funds: $10,000</a>
+            <a class="nav-link" href="#">Funds: ${{ funds }}</a>
           </strong>
         </li>
       </ul>
@@ -49,12 +53,25 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
-    return {};
+    return {
+      showDropdown: false
+    };
+  },
+  computed: {
+    ...mapGetters({ funds: "funds" })
   }
 };
 </script>
 
 <style>
+#navbarDropdown {
+  position: relative;
+}
+#dropdown {
+  position: absolute;
+}
 </style>

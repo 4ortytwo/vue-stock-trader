@@ -4,7 +4,8 @@
       v-for="(brand, index) in ownedStocks"
       :key="index"
       :brand="brand"
-      :index="index"
+      :sell="sell"
+      :increaseFunds="increaseFunds"
     />
   </div>
 </template>
@@ -26,7 +27,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions({ sell: "sell" })
+    ...mapActions({ sell: "sell", increaseFunds: "increaseFunds" })
   }
 };
 </script>

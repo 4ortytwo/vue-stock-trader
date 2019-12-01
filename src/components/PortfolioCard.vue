@@ -15,19 +15,19 @@
           placeholder="Quantity"
           v-model.number="qty"
         />
-        <button class="btn btn-danger font-weight-bolder">Sell</button>
+        <button class="btn btn-danger font-weight-bolder" @click="sellStock">Sell</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
 export default {
   name: "portfolioCard",
   props: {
     brand: Object,
-    index: Number
+    sell: Function,
+    increaseFunds: Function
   },
   data() {
     return {
@@ -35,11 +35,17 @@ export default {
     };
   },
   methods: {
-    ...mapActions({ sell: "sell" }),
     sellStock() {
-      if (this.qty) {
-        console.log({ index: this.index, qty: this.qty });
-        this.sell({ index: this.index, qty: this.qty });
+      if (this.qty && this.qty <= this.brand.owned) {
+        const order = {
+          id: this.brand.id,
+          qty: this.qty,
+          price: this.qty * this.brand.currentPrice
+        };
+        console.log("potfolio sell order", order);
+        console.log("portfolio sell price", order.price);
+        this.sell(order);
+        this.increaseFunds(order.price);
         this.qty = null;
       }
     }

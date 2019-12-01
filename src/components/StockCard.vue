@@ -26,8 +26,8 @@ export default {
   name: "stockCard",
   props: {
     brand: Object,
-    index: Number,
-    buy: Function
+    buy: Function,
+    deductFunds: Function
   },
   data() {
     return {
@@ -37,8 +37,14 @@ export default {
   methods: {
     buyStock() {
       if (this.qty) {
-        console.log({ index: this.index, qty: this.qty });
-        this.buy({ index: this.index, qty: this.qty });
+        const order = {
+          id: this.brand.id,
+          qty: this.qty,
+          price: this.qty * this.brand.currentPrice
+        };
+        console.log("stock buy order", order);
+        this.deductFunds(order.price);
+        this.buy(order);
         this.qty = null;
       }
     }

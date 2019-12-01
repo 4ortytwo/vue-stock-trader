@@ -1,6 +1,6 @@
 <template>
   <div class="container d-flex flex-wrap">
-    <app-card v-for="(brand, index) in stocks" :key="index" :brand="brand" :index="index" :buy="buy" />
+    <app-card v-for="(brand, index) in stocks" :key="index" :brand="brand" :buy="buy" :deductFunds="deductFunds" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
     ...mapGetters({ stocks: "stocks" })
   },
   methods: {
-    ...mapActions({ buy: "buy" })
+    ...mapActions({ buy: "buy", deductFunds: "deductFunds" })
   }
 };
 </script>
