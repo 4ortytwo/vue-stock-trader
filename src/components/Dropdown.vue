@@ -11,29 +11,35 @@
       @click.prevent="toggle"
     >Save &amp; Load</a>
     <div v-if="showDropdown" class="bg-light p-3" id="dropdown" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="#">Save</a>
-      <a class="dropdown-item" href="#">Load</a>
+      <a class="dropdown-item" href="#" @click.prevent="save">Save</a>
+      <a class="dropdown-item" href="#" @click.prevent="load">Load</a>
     </div>
   </li>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import { mixin as clickaway } from "vue-clickaway";
 
 export default {
   mixins: [clickaway],
-  props: {
-    toggle: Function
-  },
   computed: {
-    ...mapGetters({ showDropdown: "showDropdown" })
+    ...mapGetters({ showDropdown: "showDropdown", stocks: "stocks" })
   },
   methods: {
+    ...mapActions({ toggle: "toggleDropdown", loadState: "load" }),
     close() {
       if (this.showDropdown) {
         this.toggle();
       }
+    },
+    save() {
+      this.$http.put("data.json", this.stocks);
+      this.toggle();
+    },
+    load() {
+      this.loadState();
+      this.toggle();
     }
   }
 };

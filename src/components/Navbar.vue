@@ -21,7 +21,7 @@
           <a class="nav-link" href="#">End Day</a>
         </li>
 
-        <app-dropdown :toggle="toggleDropdown" />
+        <app-dropdown />
 
         <li class="nav-item">
           <strong>
@@ -34,17 +34,14 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 import Dropdown from "./Dropdown.vue";
 export default {
   components: {
     appDropdown: Dropdown
   },
   computed: {
-    ...mapGetters({ funds: "funds", showDropdown: "showDropdown" })
-  },
-  methods: {
-    ...mapActions({ toggleDropdown: "toggleDropdown" })
+    ...mapGetters({ funds: "funds" })
   }
 };
 </script>

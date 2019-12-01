@@ -53,9 +53,12 @@ export default new Vuex.Store({
       state.funds += payload;
     },
     loadState: (state, payload) => {
-      state = payload;
+      state.stocks = payload;
     },
     toggleDropdown: state => (state.showDropdown = !state.showDropdown)
+    // startNewDay: state.payload => {
+
+    // }
   },
   actions: {
     buy: ({ commit }, payload) => {
@@ -72,9 +75,17 @@ export default new Vuex.Store({
     },
     toggleDropdown: ({ commit }) => {
       commit("toggleDropdown");
+    },
+    load: async ({ commit }) => {
+      await Vue.http.get("data.json").then(
+        response => {
+          commit("loadState", response.body);
+        },
+        err => console.warn(err)
+      );
     }
-    // load: async ({ commit }) => {
-    //   await Vue.http.
+    // startNewDay: ({ commit }) => {
+    //   const stocks = this.state.stocks.slice();
     // }
   },
   modules: {}
