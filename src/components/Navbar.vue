@@ -6,10 +6,20 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <router-link to="/portfolio" tag="li" class="nav-item" active-class="active">
+        <router-link
+          to="/portfolio"
+          tag="li"
+          class="nav-item"
+          active-class="active"
+        >
           <a class="nav-link" href="#">Portfolio</a>
         </router-link>
-        <router-link to="/stocks" tag="li" class="nav-item" active-class="active">
+        <router-link
+          to="/stocks"
+          tag="li"
+          class="nav-item"
+          active-class="active"
+        >
           <a class="nav-link" href="#">Stocks</a>
         </router-link>
       </ul>
@@ -49,5 +59,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

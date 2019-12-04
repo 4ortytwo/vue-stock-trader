@@ -5,8 +5,8 @@
         class="container rounded-top text-success d-flex align-items-end p-2"
         style="background-color: #DBF9E2"
       >
-        <h4 class="mr-1">{{brand.name}}</h4>
-        <span>(Price: {{brand.currentPrice}})</span>
+        <h4 class="mr-1">{{ brand.name }}</h4>
+        <span>(Price: {{ brand.currentPrice }})</span>
       </div>
       <div class="container d-flex justify-content-between p-3">
         <input
@@ -15,7 +15,9 @@
           placeholder="Quantity"
           v-model.number="qty"
         />
-        <button class="btn btn-success font-weight-bolder" @click="buyStock">Buy</button>
+        <button class="btn btn-success font-weight-bolder" @click="buyStock">
+          Buy
+        </button>
       </div>
     </div>
   </div>

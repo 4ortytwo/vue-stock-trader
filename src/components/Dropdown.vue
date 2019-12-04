@@ -9,8 +9,14 @@
       aria-haspopup="true"
       aria-expanded="false"
       @click.prevent="toggle"
-    >Save &amp; Load</a>
-    <div v-if="showDropdown" class="bg-light p-3" id="dropdown" aria-labelledby="navbarDropdown">
+      >Save &amp; Load</a
+    >
+    <div
+      v-if="showDropdown"
+      class="bg-light p-3"
+      id="dropdown"
+      aria-labelledby="navbarDropdown"
+    >
       <a class="dropdown-item" href="#" @click.prevent="save">Save</a>
       <a class="dropdown-item" href="#" @click.prevent="load">Load</a>
     </div>

@@ -5,8 +5,10 @@
         class="container rounded-top text-primary d-flex align-items-end p-2"
         style="background-color: #BDDBFC"
       >
-        <h4 class="mr-1">{{brand.name}}</h4>
-        <span>(Price: {{brand.currentPrice}} | Quantity: {{brand.owned}})</span>
+        <h4 class="mr-1">{{ brand.name }}</h4>
+        <span
+          >(Price: {{ brand.currentPrice }} | Quantity: {{ brand.owned }})</span
+        >
       </div>
       <div class="container d-flex justify-content-between p-3">
         <input
@@ -15,7 +17,9 @@
           placeholder="Quantity"
           v-model.number="qty"
         />
-        <button class="btn btn-danger font-weight-bolder" @click="sellStock">Sell</button>
+        <button class="btn btn-danger font-weight-bolder" @click="sellStock">
+          Sell
+        </button>
       </div>
     </div>
   </div>

@@ -1,6 +1,12 @@
 <template>
   <div class="container d-flex flex-wrap">
-    <app-card v-for="(brand, index) in stocks" :key="index" :brand="brand" :buy="buy" :deductFunds="deductFunds" />
+    <app-card
+      v-for="(brand, index) in stocks"
+      :key="index"
+      :brand="brand"
+      :buy="buy"
+      :deductFunds="deductFunds"
+    />
   </div>
 </template>
 
@@ -18,5 +24,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
