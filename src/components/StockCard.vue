@@ -15,9 +15,7 @@
           placeholder="Quantity"
           v-model.number="qty"
         />
-        <button class="btn btn-success font-weight-bolder" @click="buyStock">
-          Buy
-        </button>
+        <button class="btn btn-success font-weight-bolder" @click="buyStock">Buy</button>
       </div>
     </div>
   </div>
@@ -44,7 +42,6 @@ export default {
           qty: this.qty,
           price: this.qty * this.brand.currentPrice
         };
-        console.log("stock buy order", order);
         this.deductFunds(order.price);
         this.buy(order);
         this.qty = null;

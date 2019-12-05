@@ -6,9 +6,7 @@
         style="background-color: #BDDBFC"
       >
         <h4 class="mr-1">{{ brand.name }}</h4>
-        <span
-          >(Price: {{ brand.currentPrice }} | Quantity: {{ brand.owned }})</span
-        >
+        <span>(Price: {{ brand.currentPrice }} | Quantity: {{ brand.owned }})</span>
       </div>
       <div class="container d-flex justify-content-between p-3">
         <input
@@ -17,9 +15,7 @@
           placeholder="Quantity"
           v-model.number="qty"
         />
-        <button class="btn btn-danger font-weight-bolder" @click="sellStock">
-          Sell
-        </button>
+        <button class="btn btn-danger font-weight-bolder" @click="sellStock">Sell</button>
       </div>
     </div>
   </div>
@@ -46,8 +42,6 @@ export default {
           qty: this.qty,
           price: this.qty * this.brand.currentPrice
         };
-        console.log("potfolio sell order", order);
-        console.log("portfolio sell price", order.price);
         this.sell(order);
         this.increaseFunds(order.price);
         this.qty = null;
