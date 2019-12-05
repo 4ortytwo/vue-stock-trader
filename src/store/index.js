@@ -81,12 +81,11 @@ export default new Vuex.Store({
         response => {
           commit("loadState", response.body);
         },
-        err => console.warn(err)
+        err => alert(err)
       );
     },
     startNewDay: ({ commit, state }) => {
       const previousDay = [...state.stocks];
-      console.log("previousDay: ", previousDay);
       previousDay.forEach(el => {
         el.currentPrice =
           Math.floor(Math.random() * el.currentPrice * 1.5) + 70;
